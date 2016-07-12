@@ -1,0 +1,2 @@
+#城市ID，城市中文名，城市英文名，城市描述，城市访问人数，城市术语的国家ID
+city_id, city_name_cn, city_name_en, city_desc, visit_cnt, country_id
