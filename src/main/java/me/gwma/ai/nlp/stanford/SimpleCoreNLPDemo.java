@@ -1,4 +1,4 @@
-package me.gwma.ai.nlp;
+package me.gwma.ai.nlp.stanford;
 
 import java.util.Properties;
 
@@ -13,7 +13,7 @@ public class SimpleCoreNLPDemo {
     public static void main(String[] args) {
         testSentence(true);
 
-        testDocSentenceTokens();
+//        testDocSentenceTokens();
     }
 
     /**

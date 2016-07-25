@@ -1,4 +1,4 @@
-package me.gwma.ai.nlp;
+package me.gwma.ai.nlp.stanford;
 
 import java.io.StringReader;
 import java.util.List;

@@ -1,4 +1,4 @@
-package me.gwma.ai.nlp;
+package me.gwma.ai.nlp.stanford;
 
 
 import edu.stanford.nlp.parser.lexparser.TreebankLangParserParams;
