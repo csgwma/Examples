@@ -2,8 +2,6 @@ package me.gwma.ai.nlp.stanford;
 
 import java.util.Properties;
 
-import edu.stanford.nlp.pipeline.Annotator;
-import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.simple.Document;
 import edu.stanford.nlp.simple.Sentence;
 import edu.stanford.nlp.util.StringUtils;
@@ -11,9 +9,10 @@ import edu.stanford.nlp.util.StringUtils;
 public class SimpleCoreNLPDemo {
 
     public static void main(String[] args) {
-        testSentence(true);
+        testSentence(false);
 
-//        testDocSentenceTokens();
+        // testDocSentenceTokens();
+
     }
 
     /**
@@ -22,13 +21,13 @@ public class SimpleCoreNLPDemo {
     public static void testSentence(boolean chinese) {
         // go ahead! 属于第二句话不会添加上
         Sentence sent = null;
-        if(chinese){
+        if (chinese) {
             Properties props = new Properties();
             props = StringUtils.propFileToProperties("src/main/resources/StanfordCoreNLP-chinese.properties");
             props.setProperty("annotators", "segment,ssplit,pos,lemma,ner");
             sent = new Sentence("杭州西湖附近的景点!", props);
-        }else{
-            sent = new Sentence("Lucy is in the sky with diamonds. go ahead!");
+        } else {
+            sent = new Sentence("Lucy is in the sky with diamonds.");
         }
         System.out.println("--- print the info of each parsed word");
         String format = "%5d %20s %20s %20s %20s";
@@ -37,9 +36,9 @@ public class SimpleCoreNLPDemo {
             System.out.println(String.format(format, i, sent.word(i), sent.lemma(i), sent.posTag(i), sent.nerTag(i)));
         }
         System.out.println("The parse of the sentence '" + sent + "' is " + sent.parse());
+        System.out.println("The dependencies of the sentence '" + sent + "' is \n ");
+        CoreUtils.outputDependencies(sent.dependencyGraph(), System.out);
     }
-    
-    
 
     /**
      * 

@@ -15,19 +15,28 @@ import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations;
 import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.trees.TreeCoreAnnotations.TreeAnnotation;
 import edu.stanford.nlp.util.CoreMap;
+import edu.stanford.nlp.wordseg.ChineseDictionary;
 
-/**
- * 参考资源：使用 Stanford NLP 进行中文分词 https://blog.sectong.com/blog/corenlp_segment.html
- */
-public class CoreNLPChinese {
+public class CustomDictionary {
 
-    public static String chinesePkuProp = "CoreNLP-chinese-pku.properties";
-    public static String chineseCtbProp = "CoreNLP-chinese-ctb.properties";
+    public static String chineseCtbCustomProp = "CoreNLP-cn-ctb-custom-dict.properties";
 
     public static void main(String[] args) {
+        String[] myArgs = new String[4];
+        myArgs[0] = "-inputDicts";
+        myArgs[1] = "src/main/resources/dict/name.txt,src/main/resources/dict/place.txt";
+        // use our existing dictionary as a starting point
+        myArgs[1] += ",edu/stanford/nlp/models/segmenter/chinese/dict-chris6.ser.gz";
+        myArgs[2] = "-output";
+        myArgs[3] = "src/main/resources/custom-dict.ser.gz";
+        generateChineseDict(myArgs);
+        main2(args);
+    }
+
+    public static void main2(String[] args) {
 
         // 载入自定义的Properties文件
-        StanfordCoreNLP pipeline = new StanfordCoreNLP(chineseCtbProp);
+        StanfordCoreNLP pipeline = new StanfordCoreNLP(chineseCtbCustomProp);
 
         // 用一些文本来初始化一个注释。文本是构造函数的参数。
         Annotation annotation;
@@ -67,5 +76,16 @@ public class CoreNLPChinese {
 
             System.out.println("*******************************************");
         }
+    }
+
+    /**
+     * 生成自定义的词典
+     * <p>
+     * 手动调用ChineseDictionary.main()函数，不用重新训练模型了
+     * 
+     * @param args
+     */
+    public static void generateChineseDict(String[] args) {
+        ChineseDictionary.main(args);
     }
 }

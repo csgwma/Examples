@@ -10,10 +10,8 @@ public class ThreadSafeSingleton2 {
     protected ThreadSafeSingleton2(){
     }
 
-    // Runtime initialization
-    // By defualt ThreadSafe
+    // Runtime initialization By defualt ThreadSafe
     public static Object getInstance() {
         return instance;
     }
-
 }
