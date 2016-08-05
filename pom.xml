@@ -91,6 +91,13 @@
 			<version>2.6.1</version>
 		</dependency>
 
+		<!-- Junit Test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+			<version>4.8.1</version>
+		</dependency>
 
 	</dependencies>
 
