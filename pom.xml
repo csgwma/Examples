@@ -15,11 +15,12 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
+		<!-- 公开的maven库没有收录，手动导入 -->
+		<!-- <dependency>
 			<groupId>org.wltea.ik-analyzer</groupId>
 			<artifactId>ik-analyzer</artifactId>
-			<version>2012FF_hf1</version>
-		</dependency>
+			<version>2012FF_hf1</version>			
+		</dependency>  -->
 
 		<!-- slf日志接口及实现包 -->
 		<dependency>
