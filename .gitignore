@@ -1,7 +1,13 @@
 .DS_Store
+
+# Eclipse
 .project
 .classpath
 .settings
+
+# IntelJ Idea
+.idea
+.iml
 
 # Java.ignore file
 *.class
